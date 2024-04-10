@@ -5,7 +5,7 @@ data "aws_key_pair" "devops-keypair.pem" {
   include_public_key = true
 
 }
-resource "aws_instance" "teehoo" {
+resource "aws_instance" "fubu" {
   ami           = var.ami[count.index]
   instance_type = var.instance_type
   key_name      = "devops-keypair.pem"
@@ -93,7 +93,7 @@ resource "aws_security_group" "SG" {
 
 
 output "instance_ip_addr" {
-  value       = [for instance in aws_instance.teehoo : instance.private_ip]
+  value       = [for instance in aws_instance.fubu : instance.private_ip]
   description = "The private IP address of the main server instance."
 }
 
